@@ -22,30 +22,72 @@
 			left: 50%;
 			transform: translate(-50%,-50%);
 		}
+		.card {
+			width: 50%;
+		}
+		.form-inline {
+			width: 75%;
+		}
+		.btn {
+			width: 50%;
+		}
+		.result {
+			width: 25%;
+		}
+		.sign {
+    		margin: 0px 48px;
+		}
+		@media screen and (max-width: 1024px){
+			.form-inline {width: 100%;}
+			.sign {margin: 0 auto;}
+			.btn {width: 50%;}
+			.result {width: 30%;}
+		}
+		@media screen and (max-width: 768px){
+			.card {width: 80%;}
+			.form-inline {width: 80%;}
+		}
+		@media screen and (max-width: 425px){
+			.card {width: 85%;}
+			.form-inline {width: 65%;}
+			.sign {margin: 0px auto;padding-bottom: 15px;}
+			.btn {width: 40%;margin-top: -20px;}
+			.result {width: 22%;}
+		}
+		@media screen and (max-width: 375px){
+			.card {width: 90%;}
+			.form-inline {width: 71%;}
+			.btn {width: 45%;}
+			.result {width: 23%;}
+		}
+		@media screen and (max-width: 320px){
+			.btn {width: 55%;}
+			.result {width: 30%;}
+		}
 	</style>
 	<!--Written By MD.Tanvir Ahamed Siddike-->
 </head>
 <body>
 	<header>
-		<div class="card w-50 m-auto text-center">
+		<div class="card m-auto text-center">
   			<div class="card-header bg-danger text-white">Love Calculator</div>
   			<div class="card-body">
-  				<form class="form-inline w-75 m-auto">
+  				<form class="form-inline m-auto">
   					<div class="form-group">
-  						<input type="text" name="" class="form-control text-center" placeholder="Your Name">
+  						<input type="text" name="" class="form-control text-center" placeholder="Your Name" id="name">
   					</div>
-  					<div><span class="pl-4 pr-4"> + </span></div>
+  					<div class="sign"> + </div>
   					<div class="form-group">
-  						<input type="text" name="" class="form-control text-center" placeholder="Lover Name">
+  						<input type="text" name="" class="form-control text-center" placeholder="Lover Name" id="lname">
   					</div>
   				</form>
   				<br>
   				<div class="w-75 m-auto">
-  					<button class="btn btn-success w-50" onclick="lovecheck()">Calculate</button>
+  					<button class="btn btn-success" onclick="lovecheck()">Calculate</button>
   				</div>
   				<br>
   				<div>
-  					<input type="text" name="" id="lovevalue" class="form-control m-auto w-25 text-center" placeholder="Love Percentage">
+  					<input type="text" name="" id="lovevalue" class="form-control m-auto result text-center" placeholder="Result">
   				</div>
   			</div>
   			<div class="card-footer bg-secondary text-white">God Bless Your Relationship</div>
@@ -53,8 +95,25 @@
 
 		<script>
 			function lovecheck() {
-				var lovedata = Math.floor(Math.random() * 100);
-				document.getElementById('lovevalue').value = lovedata + "%";
+				var name = document.getElementById('name').value;
+				var lname = document.getElementById('lname').value;
+
+				if (name == "") {
+					alert('Please Enter Your Name');
+				} else if (name.length <=2 ) {
+					alert('Enter At Least 3 Characters');
+				} else if (!isNaN(name)) {
+					alert('Numbers are not allowed');
+				} else if (lname == "") {
+					alert('Please Enter Your Lover Name');
+				} else if (lname.length <=2 ) {
+					alert('Enter At Least 3 Characters');
+				} else if (!isNaN(lname)) {
+					alert('Numbers are not allowed');
+				} else {
+					var lovedata = Math.floor(Math.random() * 100);
+					document.getElementById('lovevalue').value = lovedata + "%";
+				}
 			}
 		</script>
 	</header>
